@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
+import { ScrollArea } from "@/components/ui/scroll-area"
 import {
     Accordion,
     AccordionContent,
@@ -10,6 +11,7 @@ import {
 
 import React from "react";
 import Rating from "@/components/ui/Rating";
+import { RatingTable } from "@/components/ui/RatingTable";
 
 const Home = () => {
     return (
@@ -35,10 +37,7 @@ const Home = () => {
                             Haircuts and Styling
                         </AccordionTrigger>
                         <AccordionContent>
-                            <img
-                                src="/hair.png"
-                                alt="Description of your image"
-                            />
+                            <img src="/hair.png" alt="hairstyling image" />
                             <p>
                                 Experience the transformative joy of a
                                 nourishing new hairstyle.
@@ -50,13 +49,10 @@ const Home = () => {
                             Manicure and Pedicure
                         </AccordionTrigger>
                         <AccordionContent>
-                            <img
-                                src="/nail.png"
-                                alt="Description of your image"
-                            />
+                            <img src="/nail.png" alt="manicure image" />
                             <p>
-                                Experience the transformative joy of a
-                                nourishing new hairstyle.
+                                Indulge in the refreshing artistry of perfectly
+                                pampered nails, where beauty meets relaxation.
                             </p>
                         </AccordionContent>
                     </AccordionItem>
@@ -66,12 +62,17 @@ const Home = () => {
                             <img
                                 src="/face.png"
                                 alt="Description of your image"
+                                style={{
+                                    maskImage:
+                                        "linear-gradient(to top, transparent, black 20%, black 80%, transparent), linear-gradient(to bottom, transparent, black 20%, black 80%, transparent), linear-gradient(to left, transparent, black 20%, black 80%, transparent), linear-gradient(to right, transparent, black 20%, black 80%, transparent)",
+                                    WebkitMaskImage:
+                                        "linear-gradient(to top, transparent, black 20%, black 80%, transparent), linear-gradient(to bottom, transparent, black 20%, black 80%, transparent), linear-gradient(to left, transparent, black 20%, black 80%, transparent), linear-gradient(to right, transparent, black 20%, black 80%, transparent)",
+                                }}
                             />
                             <p>
-                                Experience the transformative joy of a
-                                nourishing new hairstyle.
+                                Discover the rejuvenating bliss of a radiant
+                                facial treatment, where skincare meets serenity.
                             </p>
-                            r.
                         </AccordionContent>
                     </AccordionItem>
                 </Accordion>
@@ -82,7 +83,7 @@ const Home = () => {
                         Visited here before?
                     </h3>
                     <h4>Leave a review</h4>
-                    <Rating />
+                    <RatingTable />
                 </div>
             </div>
 
@@ -93,7 +94,7 @@ const Home = () => {
                 </p>
 
                 <div className="flex flex-col items-start m-3">
-                    <h5 className="font-bold">Contacts</h5>
+                    <h5 className="font-bold mb-2">Contacts</h5>
                     <div className="grid grid-cols-2 gap-x-4">
                         <p className="whitespace-pre-wrap">Thomas</p>
                         <p className="whitespace-pre-wrap">08123456789</p>

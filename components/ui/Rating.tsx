@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-const Rating = () => {
+const Rating = ({ onRatingChange }) => {
     const [rating, setRating] = useState(0);
     const [hoverRating, setHoverRating] = useState(0);
 
@@ -16,10 +16,13 @@ const Rating = () => {
 
     const handleClick = (index) => {
         setRating(index);
+        if (onRatingChange) {
+            onRatingChange(index);
+        }
     };
 
     return (
-        <div className="flex space-x-1 m-5">
+        <div className="flex space-x-1">
             {[1, 2, 3, 4, 5].map((index) => (
                 <div
                     key={index}
