@@ -19,6 +19,7 @@ import { Label } from "@/components/ui/label";
 import Rating from "./Rating";
 import { db } from "@/db";
 import { reviewTable } from "@/db/schema";
+import ReviewList from "./ReviewList";
 
 const initialReviews = [
     ["Budi Santoso", 5, "I love SEA Salon!"],
@@ -69,7 +70,6 @@ export function RatingTable() {
             setIsFormValid(false);
         }
     };
-
 
     const handleSubmit = async () => {
         // Insert di db
@@ -165,21 +165,7 @@ export function RatingTable() {
                     </DialogFooter>
                 </DialogContent>
             </Dialog>
-            <ScrollArea className="h-72 w-[500px] rounded-md border mb-10">
-                <div className="p-4">
-                    <h4 className="mb-4 text-sm font-medium leading-none">
-                        Reviews
-                    </h4>
-                    {reviews.map((review, index) => (
-                        <div key={index} className="flex flex-col">
-                            <div className="text-m font-bold">{review[0]}</div>
-                            <div className="text-sm">{review[1]}/5</div>
-                            <div className="text-sm">{review[2]}</div>
-                            <Separator className="my-2" />
-                        </div>
-                    ))}
-                </div>
-            </ScrollArea>
+            <ReviewList />
         </>
     );
 }
