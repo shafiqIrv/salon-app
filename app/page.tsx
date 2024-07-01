@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
-import { ScrollArea } from "@/components/ui/scroll-area"
+import { ScrollArea } from "@/components/ui/scroll-area";
 import {
     Accordion,
     AccordionContent,
@@ -12,6 +12,7 @@ import {
 import React from "react";
 import Rating from "@/components/ui/Rating";
 import { RatingTable } from "@/components/ui/RatingTable";
+import ReservationForm from "@/components/ui/ReservationForm";
 
 const Home = () => {
     return (
@@ -86,6 +87,8 @@ const Home = () => {
                     <RatingTable />
                 </div>
             </div>
+
+            {/* <ReservationForm /> */}
 
             {/* Footer content */}
             <footer className="bg-gray-800 text-white  py-4 bottom-0">

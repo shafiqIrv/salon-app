@@ -13,9 +13,12 @@ import {
     DialogTitle,
     DialogTrigger,
 } from "@/components/ui/dialog";
+import { useToast } from "@/components/ui/use-toast";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Rating from "./Rating";
+import { db } from "@/db";
+import { reviewTable } from "@/db/schema";
 
 const initialReviews = [
     ["Budi Santoso", 5, "I love SEA Salon!"],
@@ -24,7 +27,10 @@ const initialReviews = [
     ["Dewi Lestari", 3, "Average service"],
 ];
 
+// const initial_reviews = await db.query.reviewTable.findMany();
+
 export function RatingTable() {
+    const { toast } = useToast();
     const [name, setName] = useState("");
     const [rating, setRating] = useState(0);
     const [comment, setComment] = useState("");
@@ -64,7 +70,27 @@ export function RatingTable() {
         }
     };
 
-    const handleSubmit = () => {
+
+    const handleSubmit = async () => {
+        // Insert di db
+        try {
+            await db.insert(reviewTable).values({
+                name: name,
+                rating: rating,
+                comment: comment,
+            });
+
+            toast({
+                description: "Review Added Successfully!",
+            });
+        } catch (error) {
+            toast({
+                variant: "destructive",
+                title: "Oops! Something went wrong!",
+                description: "Failed to add review to database.",
+            });
+        }
+
         // Buat review baru
         const newReview = [name, rating, comment];
 
@@ -76,6 +102,10 @@ export function RatingTable() {
         setRating(0);
         setComment("");
         setIsFormValid(false);
+
+        // toast({
+        //     description: "Review Added Successfully!",
+        // });
     };
 
     return (
