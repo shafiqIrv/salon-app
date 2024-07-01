@@ -25,14 +25,19 @@ const ReviewList = () => {
                 <h4 className="mb-4 text-sm font-medium leading-none">
                     Reviews
                 </h4>
-                {reviews.map((review, index) => (
-                    <div key={index} className="flex flex-col">
-                        <div className="text-m font-bold">{review.name}</div>
-                        <div className="text-sm">{review.rating}/5</div>
-                        <div className="text-sm">{review.comment}</div>
-                        <Separator className="my-2" />
-                    </div>
-                ))}
+                {reviews
+                    .slice()
+                    .reverse()
+                    .map((review, index) => (
+                        <div key={index} className="flex flex-col">
+                            <div className="text-m font-bold">
+                                {review.name}
+                            </div>
+                            <div className="text-sm">{review.rating}/5</div>
+                            <div className="text-sm">{review.comment}</div>
+                            <Separator className="my-2" />
+                        </div>
+                    ))}
             </div>
         </ScrollArea>
     );

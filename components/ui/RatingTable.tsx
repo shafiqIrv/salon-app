@@ -103,9 +103,6 @@ export function RatingTable() {
         setComment("");
         setIsFormValid(false);
 
-        // toast({
-        //     description: "Review Added Successfully!",
-        // });
     };
 
     return (
