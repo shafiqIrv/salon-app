@@ -3,7 +3,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { db } from "@/db";
 
-const ReviewList = () => {
+const ReviewList = ({ refresh }) => {
     const [reviews, setReviews] = useState([]);
 
     useEffect(() => {
@@ -17,7 +17,7 @@ const ReviewList = () => {
         };
 
         fetchReviews();
-    }, []);
+    }, [refresh]); // Tambahkan refresh sebagai dependency
 
     return (
         <ScrollArea className="h-72 w-[500px] rounded-md border mb-10">

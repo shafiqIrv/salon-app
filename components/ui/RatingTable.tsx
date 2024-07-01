@@ -28,8 +28,6 @@ const initialReviews = [
     ["Dewi Lestari", 3, "Average service"],
 ];
 
-// const initial_reviews = await db.query.reviewTable.findMany();
-
 export function RatingTable() {
     const { toast } = useToast();
     const [name, setName] = useState("");
@@ -37,6 +35,7 @@ export function RatingTable() {
     const [comment, setComment] = useState("");
     const [isFormValid, setIsFormValid] = useState(false);
     const [reviews, setReviews] = useState(initialReviews);
+    const [refresh, setRefresh] = useState(false);
 
     const handleInputChange = (e) => {
         const { id, value } = e.target;
@@ -52,7 +51,6 @@ export function RatingTable() {
                 break;
         }
 
-        // Ngecek fieldnya kosong ga
         if (name && rating && comment) {
             setIsFormValid(true);
         } else {
@@ -63,7 +61,6 @@ export function RatingTable() {
     const handleRatingChange = (value) => {
         setRating(value);
 
-        // Ngecek fieldnya kosong ga
         if (name && rating && comment) {
             setIsFormValid(true);
         } else {
@@ -72,7 +69,6 @@ export function RatingTable() {
     };
 
     const handleSubmit = async () => {
-        // Insert di db
         try {
             await db.insert(reviewTable).values({
                 name: name,
@@ -83,6 +79,9 @@ export function RatingTable() {
             toast({
                 description: "Review Added Successfully!",
             });
+
+            // Trigger refresh
+            setRefresh(!refresh);
         } catch (error) {
             toast({
                 variant: "destructive",
@@ -91,18 +90,13 @@ export function RatingTable() {
             });
         }
 
-        // Buat review baru
         const newReview = [name, rating, comment];
-
-        // Nambah review baru ke array
         reviews.unshift(newReview);
 
-        // Reset form fields
         setName("");
         setRating(0);
         setComment("");
         setIsFormValid(false);
-
     };
 
     return (
@@ -162,7 +156,7 @@ export function RatingTable() {
                     </DialogFooter>
                 </DialogContent>
             </Dialog>
-            <ReviewList />
+            <ReviewList refresh={refresh} />
         </>
     );
 }
