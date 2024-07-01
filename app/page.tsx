@@ -12,17 +12,18 @@ import {
 import React from "react";
 import Rating from "@/components/ui/Rating";
 import { RatingTable } from "@/components/ui/RatingTable";
-import ReservationForm from "@/components/ui/ReservationForm";
+import { Reserve } from "@/components/ui/Reserve";
 
 const Home = () => {
     return (
         <>
             {/* Header content */}
             <header
-                className="h-[800px] bg-cover bg-center flex items-center justify-center text-white text-5xl font-bold "
+                className="h-[800px] bg-cover bg-center flex flex-col items-center justify-center text-white text-5xl font-bold "
                 style={{ backgroundImage: "url('/hairstyling.png')" }}
             >
                 <h1 className="">Beauty and Elegance Redefined</h1>
+                <Reserve />
             </header>
             {/* Main content */}
             <div className="flex flex-col  mt-[91px] items-center justify-center">
@@ -32,7 +33,7 @@ const Home = () => {
 
                 <Separator className="mt-10" />
 
-                <Accordion type="multiple" collapsible className="w-1/4">
+                <Accordion type="multiple" className="w-1/4">
                     <AccordionItem value="item-1">
                         <AccordionTrigger>
                             Haircuts and Styling
