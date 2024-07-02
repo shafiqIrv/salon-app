@@ -22,7 +22,7 @@
 
     ```bash
     cd salon-app
-    npm install
+    yarn install
     ```
 
 3. Run the application
@@ -30,7 +30,7 @@
     Start the application in development mode. This will launch the server and you can access the app in your browser:
 
     ```bash
-    npm run dev
+    yarn run dev
     ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
