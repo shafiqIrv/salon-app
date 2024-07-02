@@ -1,4 +1,5 @@
 "use client";
+
 import { Button } from "@/components/ui/button";
 import {
     Dialog,
@@ -78,7 +79,9 @@ export function Reserve() {
                 <DialogHeader>
                     <DialogTitle>Reservation</DialogTitle>
                     <DialogDescription>
-                        Make sure to check the schedule below before reserving.
+                        Please review the schedule below before making a
+                        reservation. Note that only one service is available per
+                        session.
                     </DialogDescription>
                 </DialogHeader>
                 <ScheduleList refresh={refresh} />

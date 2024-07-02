@@ -9,7 +9,7 @@ export function PhoneNumberInput({ value, onChange }) {
         const { value } = event.target;
         onChange(value);
 
-        // Validasi menggunakan pattern regex untuk format nomor telepon lokal
+        // Validasi dengan regex
         const regex = /^[0-9]{6,14}$/;
         setIsValid(regex.test(value));
     };

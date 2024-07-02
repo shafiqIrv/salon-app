@@ -1,8 +1,7 @@
 "use client";
+
 import * as React from "react";
 import { useState } from "react";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
 import {
     Dialog,
@@ -21,20 +20,12 @@ import { db } from "@/db";
 import { reviewTable } from "@/db/schema";
 import ReviewList from "./ReviewList";
 
-const initialReviews = [
-    ["Budi Santoso", 5, "I love SEA Salon!"],
-    ["Joko Susilo", 2, "Bad service"],
-    ["Rudi Setiawan", 4, "Good service"],
-    ["Dewi Lestari", 3, "Average service"],
-];
-
 export function RatingTable() {
     const { toast } = useToast();
     const [name, setName] = useState("");
     const [rating, setRating] = useState(0);
     const [comment, setComment] = useState("");
     const [isFormValid, setIsFormValid] = useState(false);
-    const [reviews, setReviews] = useState(initialReviews);
     const [refresh, setRefresh] = useState(false);
 
     const handleInputChange = (e) => {
@@ -80,7 +71,6 @@ export function RatingTable() {
                 description: "Review Added Successfully!",
             });
 
-            // Trigger refresh
             setRefresh(!refresh);
         } catch (error) {
             toast({
@@ -91,7 +81,7 @@ export function RatingTable() {
         }
 
         const newReview = [name, rating, comment];
-        reviews.unshift(newReview);
+        // reviews.unshift(newReview);
 
         setName("");
         setRating(0);
