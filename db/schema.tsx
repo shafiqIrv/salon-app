@@ -33,7 +33,6 @@ export const reservationTable = sqliteTable(
     },
     (reservation) => ({
         compositePk: primaryKey(
-            reservation.name,
             reservation.service,
             reservation.date,
             reservation.time

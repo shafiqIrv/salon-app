@@ -63,7 +63,8 @@ export function Reserve() {
             toast({
                 variant: "destructive",
                 title: "Oops! Something went wrong!",
-                description: "Failed to add reservation to database.",
+                description:
+                    "Failed to add reservation to database. Make sure the date and time are available.",
             });
         }
     };
@@ -73,11 +74,11 @@ export function Reserve() {
             <DialogTrigger asChild>
                 <Button className="m-5">Reserve now</Button>
             </DialogTrigger>
-            <DialogContent className="sm:max-w-[500px]">
+            <DialogContent className="sm:max-w-[700px]">
                 <DialogHeader>
                     <DialogTitle>Reservation</DialogTitle>
                     <DialogDescription>
-                        Make sure to check the schedule before reserving.
+                        Make sure to check the schedule below before reserving.
                     </DialogDescription>
                 </DialogHeader>
                 <ScheduleList refresh={refresh} />

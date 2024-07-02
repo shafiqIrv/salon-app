@@ -1,16 +1,11 @@
-import Image from "next/image";
 import { Separator } from "@/components/ui/separator";
-import { Button } from "@/components/ui/button";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import {
     Accordion,
     AccordionContent,
     AccordionItem,
     AccordionTrigger,
 } from "@/components/ui/accordion";
-
 import React from "react";
-import Rating from "@/components/ui/Rating";
 import { RatingTable } from "@/components/ui/RatingTable";
 import { Reserve } from "@/components/ui/Reserve";
 
@@ -22,18 +17,19 @@ const Home = () => {
                 className="h-[800px] bg-cover bg-center flex flex-col items-center justify-center text-white text-5xl font-bold "
                 style={{ backgroundImage: "url('/hairstyling.png')" }}
             >
-                <h1 className="">Beauty and Elegance Redefined</h1>
+                <h1 className="text-center">Beauty and Elegance Redefined</h1>
                 <Reserve />
             </header>
+
             {/* Main content */}
             <div className="flex flex-col  mt-[91px] items-center justify-center">
-                <h2 className="bg-gradient-to-r from-[#929292] via-[#3490dc] to-[#38d8d0] text-transparent bg-clip-text font-bold text-[40px]">
+                <h2 className="bg-gradient-to-r from-[#929292] via-[#3490dc] to-[#38d8d0] text-transparent bg-clip-text font-bold text-[40px] text-center">
                     Transform your look at SEA Salon now
                 </h2>
 
                 <Separator className="mt-10" />
 
-                <Accordion type="multiple" className="w-1/4">
+                <Accordion type="multiple" className="w-[500px]">
                     <AccordionItem value="item-1">
                         <AccordionTrigger>
                             Haircuts and Styling
@@ -88,8 +84,6 @@ const Home = () => {
                     <RatingTable />
                 </div>
             </div>
-
-            {/* <ReservationForm /> */}
 
             {/* Footer content */}
             <footer className="bg-gray-800 text-white  py-4 bottom-0">

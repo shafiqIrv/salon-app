@@ -18,9 +18,9 @@ import {
 } from "@/components/ui/popover";
 
 const services = [
-    { value: "hair", label: "Hair Cuts and Styling" },
-    { value: "nail", label: "Manicure and Pedicure" },
-    { value: "face", label: "Facial Treatments" },
+    { value: "Hair Cuts and Styling", label: "Hair Cuts and Styling" },
+    { value: "Manicure and Pedicure", label: "Manicure and Pedicure" },
+    { value: "Facial Treatments", label: "Facial Treatments" },
 ];
 
 export function Services({ value, onChange }) {

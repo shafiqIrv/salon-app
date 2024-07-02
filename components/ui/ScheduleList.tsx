@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { desc, asc } from "drizzle-orm";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { db } from "@/db";
@@ -12,6 +13,15 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table";
+import { reservationTable } from "@/db/schema";
+
+const formatTime = (time) => {
+    if (time < 10) {
+        return <>0{time}.00</>;
+    } else {
+        return <>{time}.00</>;
+    }
+};
 
 const ScheduleList = ({ refresh }) => {
     const [reservation, setReservation] = useState([]);
@@ -20,7 +30,13 @@ const ScheduleList = ({ refresh }) => {
         const fetchReservations = async () => {
             try {
                 const initialReservation =
-                    await db.query.reservationTable.findMany();
+                    await db.query.reservationTable.findMany({
+                        orderBy: [
+                            asc(reservationTable.service),
+                            asc(reservationTable.date),
+                            asc(reservationTable.time),
+                        ],
+                    });
                 setReservation(initialReservation);
             } catch (error) {
                 console.error("Error fetching reservations:", error);
@@ -51,7 +67,7 @@ const ScheduleList = ({ refresh }) => {
                                     .toISOString()
                                     .substring(0, 10)}
                             </TableCell>
-                            <TableCell>{r.time}.00</TableCell>
+                            <TableCell>{formatTime(r.time)}</TableCell>
                         </TableRow>
                     ))}
                 </TableBody>
