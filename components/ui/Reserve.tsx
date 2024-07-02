@@ -1,3 +1,4 @@
+"use client";
 import { Button } from "@/components/ui/button";
 import {
     Dialog,
@@ -15,20 +16,26 @@ import DateSchedule from "./DateSchedule";
 import { Services } from "./Services";
 import { Phone } from "lucide-react";
 import { PhoneNumberInput } from "./PhoneNumber";
+import { Schedule } from "./Schedule";
+import ScheduleList from "./ScheduleList";
+import { useState } from "react";
 
 export function Reserve() {
+    const [refresh, setRefresh] = useState(false);
+
     return (
         <Dialog>
             <DialogTrigger asChild>
                 <Button className="m-5">Reserve now</Button>
             </DialogTrigger>
-            <DialogContent className="sm:max-w-[425px]">
+            <DialogContent className="sm:max-w-[500px]">
                 <DialogHeader>
                     <DialogTitle>Reservation</DialogTitle>
                     <DialogDescription>
                         Make sure to check the schedule before reserving.
                     </DialogDescription>
                 </DialogHeader>
+                <ScheduleList refresh={refresh} />
                 <div className="grid gap-4 py-4">
                     <div className="grid grid-cols-4 items-center gap-4">
                         <Label htmlFor="name" className="text-right">
@@ -44,7 +51,7 @@ export function Reserve() {
                         <Label htmlFor="username" className="text-right">
                             Phone Number
                         </Label>
-                        <PhoneNumberInput  />
+                        <PhoneNumberInput />
                     </div>
                     <div className="grid grid-cols-4 items-center gap-4">
                         <Label htmlFor="username" className="text-right">

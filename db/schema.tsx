@@ -1,4 +1,5 @@
 import { sql } from "drizzle-orm";
+
 import {
     integer,
     primaryKey,
@@ -20,3 +21,25 @@ export const reviewTable = sqliteTable(
 
 export type InsertReview = typeof reviewTable.$inferInsert;
 export type SelectReview = typeof reviewTable.$inferSelect;
+
+export const reservationTable = sqliteTable(
+    "reservation",
+    {
+        name: text("name").notNull(),
+        phone: integer("phone").notNull(),
+        service: text("service").notNull(),
+        date: text("date").notNull(),
+        time: integer("time").notNull(),
+    },
+    (reservation) => ({
+        compositePk: primaryKey(
+            reservation.name,
+            reservation.service,
+            reservation.date,
+            reservation.time
+        ),
+    })
+);
+
+export type InsertReservation = typeof reservationTable.$inferInsert;
+export type SelectReservation = typeof reservationTable.$inferSelect;
