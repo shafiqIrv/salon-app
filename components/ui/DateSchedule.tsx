@@ -1,18 +1,15 @@
 "use client";
-
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import {
     Form,
     FormControl,
-    FormDescription,
     FormField,
     FormItem,
     FormLabel,
@@ -23,16 +20,15 @@ import {
     PopoverContent,
     PopoverTrigger,
 } from "@/components/ui/popover";
-import { toast } from "@/components/ui/use-toast";
 
 const FormSchema = z.object({
     dob: z.date({
-        required_error: "A date of birth is required.",
+        required_error: "A date is required.",
     }),
 });
 
-export function DateSchedule() {
-    const form = useForm<z.infer<typeof FormSchema>>({
+export function DateSchedule({ value, onChange }) {
+    const form = useForm({
         resolver: zodResolver(FormSchema),
     });
 
@@ -51,12 +47,15 @@ export function DateSchedule() {
                                             variant={"outline"}
                                             className={cn(
                                                 "w-[240px] pl-3 text-left font-normal",
-                                                !field.value &&
+                                                !value &&
                                                     "text-muted-foreground"
                                             )}
+                                            onClick={() =>
+                                                onChange(field.value)
+                                            }
                                         >
-                                            {field.value ? (
-                                                format(field.value, "PPP")
+                                            {value ? (
+                                                format(new Date(value), "PPP")
                                             ) : (
                                                 <span>Pick a date</span>
                                             )}
@@ -70,8 +69,12 @@ export function DateSchedule() {
                                 >
                                     <Calendar
                                         mode="single"
-                                        selected={field.value}
-                                        onSelect={field.onChange}
+                                        selected={
+                                            value ? new Date(value) : undefined
+                                        }
+                                        onSelect={(date) =>
+                                            onChange(date.toISOString())
+                                        }
                                         disabled={(date) => date < new Date()}
                                         initialFocus
                                     />

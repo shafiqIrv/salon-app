@@ -8,14 +8,18 @@ import {
     PopoverTrigger,
 } from "@/components/ui/popover";
 
-export function TimeSchedule() {
+export function TimeSchedule({ value, onChange }) {
     const [open, setOpen] = React.useState(false);
-    const [value, setValue] = React.useState("");
 
     const hours = Array.from({ length: 13 }, (_, index) => ({
         value: `${index + 9}:00`,
         label: `${index + 9}:00`,
     }));
+
+    const handleSelect = (selectedValue) => {
+        onChange(selectedValue);
+        setOpen(false);
+    };
 
     return (
         <Popover open={open} onOpenChange={setOpen}>
@@ -36,10 +40,7 @@ export function TimeSchedule() {
                         <div
                             key={hour.value}
                             className="p-2 cursor-pointer hover:bg-gray-200"
-                            onClick={() => {
-                                setValue(hour.value);
-                                setOpen(false);
-                            }}
+                            onClick={() => handleSelect(hour.value)}
                         >
                             {hour.label}
                         </div>

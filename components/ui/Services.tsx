@@ -1,8 +1,6 @@
 "use client";
-
 import * as React from "react";
 import { Check, ChevronsUpDown } from "lucide-react";
-
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
@@ -20,23 +18,13 @@ import {
 } from "@/components/ui/popover";
 
 const services = [
-    {
-        value: "hair",
-        label: "Hair Cuts and Styling",
-    },
-    {
-        value: "nail",
-        label: "Manicure and Pedicure",
-    },
-    {
-        value: "face",
-        label: "Manicure and Pedicure",
-    },
+    { value: "hair", label: "Hair Cuts and Styling" },
+    { value: "nail", label: "Manicure and Pedicure" },
+    { value: "face", label: "Facial Treatments" },
 ];
 
-export function Services() {
+export function Services({ value, onChange }) {
     const [open, setOpen] = React.useState(false);
-    const [value, setValue] = React.useState("");
 
     return (
         <Popover open={open} onOpenChange={setOpen}>
@@ -64,12 +52,8 @@ export function Services() {
                                 <CommandItem
                                     key={service.value}
                                     value={service.value}
-                                    onSelect={(currentValue) => {
-                                        setValue(
-                                            currentValue === value
-                                                ? ""
-                                                : currentValue
-                                        );
+                                    onSelect={() => {
+                                        onChange(service.value);
                                         setOpen(false);
                                     }}
                                 >
