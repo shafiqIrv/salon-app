@@ -39,7 +39,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 Try the deployed web from the link below
 
-[Click here](compfest-sea-salon-eight.vercel.app) 
+[Click here](https://compfest-sea-salon-eight.vercel.app/) 
 
 ## Author
 
