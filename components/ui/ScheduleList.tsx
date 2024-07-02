@@ -13,80 +13,45 @@ import {
     TableRow,
 } from "@/components/ui/table";
 
-const reservasi = [
-    {
-        name: "Budi",
-        service: "Haircut",
-        date: "2022-10-10",
-        time: "10.00",
-    },
-    {
-        name: "Herman",
-        service: "Facial",
-        date: "2022-11-10",
-        time: "13.00",
-    },
-    {
-        name: "Herman",
-        service: "Facial",
-        date: "2022-11-10",
-        time: "13.00",
-    },
-    {
-        name: "Herman",
-        service: "Facial",
-        date: "2022-11-10",
-        time: "13.00",
-    },
-    {
-        name: "Herman",
-        service: "Facial",
-        date: "2022-11-10",
-        time: "13.00",
-    },
-    {
-        name: "Herman",
-        service: "Facial",
-        date: "2022-11-10",
-        time: "13.00",
-    },
-];
-
 const ScheduleList = ({ refresh }) => {
     const [reservation, setReservation] = useState([]);
 
     useEffect(() => {
-        const fetchReviews = async () => {
+        const fetchReservations = async () => {
             try {
-                const initialReservation =
-                    await db.query.reservationTable.findMany();
+                const initialReservation = await db.query.reservationTable.findMany();
                 setReservation(initialReservation);
             } catch (error) {
-                console.error("Error fetching reviews:", error);
+                console.error("Error fetching reservations:", error);
             }
         };
 
-        fetchReviews();
-    }, [refresh]); // Tambahkan refresh sebagai dependency
+        fetchReservations();
+    }, [refresh]);
+
+    const formatTime = (time) => {
+        const [hour, minute] = time.split(":");
+        return `${hour.padStart(2, "0")}.${minute}`;
+    };
 
     return (
         <ScrollArea className="h-60 w-auto rounded-md border">
             <Table>
                 <TableHeader>
                     <TableRow>
-                        <TableHead >Name</TableHead>
+                        <TableHead>Name</TableHead>
                         <TableHead>Service</TableHead>
                         <TableHead>Date</TableHead>
-                        <TableHead >Time</TableHead>
+                        <TableHead>Time</TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
-                    {reservasi.map((r, index) => (
-                        <TableRow key={r.index}>
+                    {reservation.map((r, index) => (
+                        <TableRow key={index}>
                             <TableCell>Mr/Mrs. {r.name}</TableCell>
                             <TableCell>{r.service}</TableCell>
-                            <TableCell>{r.date}</TableCell>
-                            <TableCell>{r.time}</TableCell>
+                            <TableCell>{new Date(r.date).toISOString().substring(0, 10)}</TableCell>
+                            <TableCell>{formatTime(r.time)}</TableCell>
                         </TableRow>
                     ))}
                 </TableBody>
