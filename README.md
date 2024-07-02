@@ -18,7 +18,7 @@
 
 2. Install all dependencies
 
-    Navigate to the project directory and install all the necessary dependencies using npm:
+    Navigate to the project directory and install all the necessary dependencies using yarn:
 
     ```bash
     cd salon-app
