@@ -101,8 +101,8 @@ export function RatingTable() {
                     <DialogHeader>
                         <DialogTitle>Fill your review</DialogTitle>
                         <DialogDescription>
-                            We're very open to every feedback that you have in
-                            mind
+                            We&apos;re very open to every feedback that you have
+                            in mind
                         </DialogDescription>
                     </DialogHeader>
                     <div className="grid gap-4 py-4">
