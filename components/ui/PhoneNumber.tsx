@@ -14,7 +14,7 @@ export function PhoneNumberInput({ value, onChange }: PhoneNumberInputProps) {
         const { value } = event.target;
         onChange(value);
 
-        // Validate with regex
+        // Validasi pake rege
         const regex = /^[0-9]{6,14}$/;
         setIsValid(regex.test(value));
     };
