@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
+ Introducing SEA Salon, a rising star in the salon industry known for their outstanding services
+ and excellent reviews. With a rapidly growing clientele and a stellar reputation, SEA Salon is your
+ premier destination for all your beauty needs. Because of this, SEA Salon has gained a lot of
+ customers. To handle the new customers, the SEA Salon management team has decided to
+ develop a new SEA Salon Application.
+ This app lets users easily browse available services, give reviews,and book
+ appointments quickly. With a user-friendly interface and seamless booking integration, making a
+ reservation with a top stylist has never been easier!
 ## Getting Started
 
-First, run the development server:
+1. Clone the repository
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+    Clone the SEA Salon repository to your local machine using the following command:
+
+    ```bash
+    git clone https://github.com/shafiqIrv/salon-app
+    ```
+
+2. Install all dependencies
+
+    Navigate to the project directory and install all the necessary dependencies using npm:
+
+    ```bash
+    cd salon-app
+    npm install
+    ```
+
+3. Run the application
+
+    Start the application in development mode. This will launch the server and you can access the app in your browser:
+
+    ```bash
+    npm run dev
+    ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Try it straight away!
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Try the deployed web from the link below
 
-## Learn More
+[Click here](compfest-sea-salon-eight.vercel.app) 
 
-To learn more about Next.js, take a look at the following resources:
+## Author
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+| Author               | 
+|----------------------|
+| Shafiq Irvansyah     |
