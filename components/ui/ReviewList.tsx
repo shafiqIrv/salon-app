@@ -18,7 +18,7 @@ const ReviewList = ({ refresh }) => {
         };
 
         fetchReviews();
-    }, [refresh]); 
+    }, [refresh]);
 
     return (
         <ScrollArea className="h-72 w-[500px] rounded-md border mb-10">

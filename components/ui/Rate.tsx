@@ -1,6 +1,10 @@
 "use client";
 
-const Rate = ({ rating }) => {
+interface RateProps {
+    rating: number;
+}
+
+const Rate = ({ rating }: RateProps) => {
     return (
         <div className="flex space-x-1 h-3.5">
             {[1, 2, 3, 4, 5].map((index) => (

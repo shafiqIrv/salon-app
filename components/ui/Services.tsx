@@ -23,7 +23,12 @@ const services = [
     { value: "Facial Treatments", label: "Facial Treatments" },
 ];
 
-export function Services({ value, onChange }) {
+interface ServicesProps {
+    value: string;
+    onChange: (value: string) => void;
+}
+
+export function Services({ value, onChange }: ServicesProps) {
     const [open, setOpen] = React.useState(false);
 
     return (

@@ -28,7 +28,7 @@ export function RatingTable() {
     const [isFormValid, setIsFormValid] = useState(false);
     const [refresh, setRefresh] = useState(false);
 
-    const handleInputChange = (e) => {
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { id, value } = e.target;
 
         switch (id) {
@@ -42,21 +42,13 @@ export function RatingTable() {
                 break;
         }
 
-        if (name && rating && comment) {
-            setIsFormValid(true);
-        } else {
-            setIsFormValid(false);
-        }
+        setIsFormValid(value !== "" && rating !== 0 && comment !== "");
     };
 
-    const handleRatingChange = (value) => {
+    const handleRatingChange = (value: number) => {
         setRating(value);
 
-        if (name && rating && comment) {
-            setIsFormValid(true);
-        } else {
-            setIsFormValid(false);
-        }
+        setIsFormValid(name !== "" && value !== 0 && comment !== "");
     };
 
     const handleSubmit = async () => {
@@ -79,9 +71,6 @@ export function RatingTable() {
                 description: "Failed to add review to database.",
             });
         }
-
-        const newReview = [name, rating, comment];
-        // reviews.unshift(newReview);
 
         setName("");
         setRating(0);

@@ -1,15 +1,20 @@
 "use client";
-import { useState } from "react";
+import { useState, ChangeEvent } from "react";
 import { Input } from "@/components/ui/input";
 
-export function PhoneNumberInput({ value, onChange }) {
+interface PhoneNumberInputProps {
+    value: string;
+    onChange: (value: string) => void;
+}
+
+export function PhoneNumberInput({ value, onChange }: PhoneNumberInputProps) {
     const [isValid, setIsValid] = useState(true);
 
-    const handleInputChange = (event) => {
+    const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
         const { value } = event.target;
         onChange(value);
 
-        // Validasi dengan regex
+        // Validate with regex
         const regex = /^[0-9]{6,14}$/;
         setIsValid(regex.test(value));
     };

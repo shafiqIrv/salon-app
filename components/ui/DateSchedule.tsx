@@ -27,7 +27,12 @@ const FormSchema = z.object({
     }),
 });
 
-export function DateSchedule({ value, onChange }) {
+interface DateScheduleProps {
+    value: string | null;
+    onChange: (value: string) => void;
+}
+
+export function DateSchedule({ value, onChange }: DateScheduleProps) {
     const form = useForm({
         resolver: zodResolver(FormSchema),
     });
@@ -55,7 +60,10 @@ export function DateSchedule({ value, onChange }) {
                                             }
                                         >
                                             {value ? (
-                                                format(new Date(value), "PPP")
+                                                format(
+                                                    new Date(value),
+                                                    "yyyy-MM-dd"
+                                                )
                                             ) : (
                                                 <span>Pick a date</span>
                                             )}
@@ -72,9 +80,11 @@ export function DateSchedule({ value, onChange }) {
                                         selected={
                                             value ? new Date(value) : undefined
                                         }
-                                        onSelect={(date) =>
-                                            onChange(date.toISOString())
-                                        }
+                                        onSelect={(date) => {
+                                            if (date) {
+                                                onChange(date.toISOString());
+                                            }
+                                        }}
                                         disabled={(date) => date < new Date()}
                                         initialFocus
                                     />
