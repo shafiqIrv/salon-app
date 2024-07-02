@@ -1,11 +1,19 @@
+// ReviewList.tsx
+
 import React, { useEffect, useState } from "react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { db } from "@/db";
 import Rate from "./Rate";
 
-const ReviewList = ({ refresh }) => {
-    const [reviews, setReviews] = useState([]);
+interface Review {
+    name: string;
+    rating: number;
+    comment: string;
+}
+
+const ReviewList: React.FC<{ refresh: boolean }> = ({ refresh }) => {
+    const [reviews, setReviews] = useState<Review[]>([]);
 
     useEffect(() => {
         const fetchReviews = async () => {

@@ -1,7 +1,8 @@
+// ScheduleList.tsx
+
 import React, { useEffect, useState } from "react";
-import { desc, asc } from "drizzle-orm";
+import { asc } from "drizzle-orm";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Separator } from "@/components/ui/separator";
 import { db } from "@/db";
 import {
     Table,
@@ -15,7 +16,7 @@ import {
 } from "@/components/ui/table";
 import { reservationTable } from "@/db/schema";
 
-const formatTime = (time) => {
+const formatTime = (time: number) => {
     if (time < 10) {
         return <>0{time}.00</>;
     } else {
@@ -23,13 +24,20 @@ const formatTime = (time) => {
     }
 };
 
-const ScheduleList = ({ refresh }) => {
-    const [reservation, setReservation] = useState([]);
+interface Reservation {
+    name: string;
+    service: string;
+    date: string;
+    time: number;
+}
+
+const ScheduleList: React.FC<{ refresh: boolean }> = ({ refresh }) => {
+    const [reservations, setReservations] = useState<Reservation[]>([]);
 
     useEffect(() => {
         const fetchReservations = async () => {
             try {
-                const initialReservation =
+                const initialReservations =
                     await db.query.reservationTable.findMany({
                         orderBy: [
                             asc(reservationTable.service),
@@ -37,7 +45,7 @@ const ScheduleList = ({ refresh }) => {
                             asc(reservationTable.time),
                         ],
                     });
-                setReservation(initialReservation);
+                setReservations(initialReservations);
             } catch (error) {
                 console.error("Error fetching reservations:", error);
             }
@@ -58,7 +66,7 @@ const ScheduleList = ({ refresh }) => {
                     </TableRow>
                 </TableHeader>
                 <TableBody>
-                    {reservation.map((r, index) => (
+                    {reservations.map((r, index) => (
                         <TableRow key={index}>
                             <TableCell>Mr/Mrs. {r.name}</TableCell>
                             <TableCell>{r.service}</TableCell>

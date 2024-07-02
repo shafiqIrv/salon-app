@@ -1,12 +1,16 @@
-"use client";
+// Rating.tsx
 
-import { useState } from "react";
+import React, { useState } from "react";
 
-const Rating = ({ onRatingChange }) => {
+interface RatingProps {
+    onRatingChange: (index: number) => void;
+}
+
+const Rating: React.FC<RatingProps> = ({ onRatingChange }) => {
     const [rating, setRating] = useState(0);
     const [hoverRating, setHoverRating] = useState(0);
 
-    const handleMouseEnter = (index) => {
+    const handleMouseEnter = (index: number) => {
         setHoverRating(index);
     };
 
@@ -14,7 +18,7 @@ const Rating = ({ onRatingChange }) => {
         setHoverRating(0);
     };
 
-    const handleClick = (index) => {
+    const handleClick = (index: number) => {
         setRating(index);
         if (onRatingChange) {
             onRatingChange(index);
